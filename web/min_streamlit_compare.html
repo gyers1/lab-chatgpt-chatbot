@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streamlit 코드 신구대조표</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-2: #34d399;
+      --border: #334155;
+      --danger: #fca5a5;
+      --good: #86efac;
+      --code: #020617;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(52, 211, 153, 0.14), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.94), rgba(15, 23, 42, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+    }
+
+    .kicker {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #7dd3fc;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.12;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      max-width: 78ch;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .card h2, .card h3 {
+      margin: 0 0 10px;
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+      border-radius: 16px;
+      margin-top: 16px;
+      background: rgba(2, 6, 23, 0.7);
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      padding: 14px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: rgba(31, 41, 55, 0.8);
+      color: #f3f4f6;
+      font-size: 14px;
+      width: 18%;
+    }
+
+    td { color: var(--text); }
+    tr:last-child td, tr:last-child th { border-bottom: 0; }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      margin-right: 6px;
+      white-space: nowrap;
+    }
+
+    .keep { background: rgba(52, 211, 153, 0.15); color: var(--good); }
+    .remove { background: rgba(252, 165, 165, 0.12); color: var(--danger); }
+    .simplify { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; }
+
+    .cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    pre {
+      margin: 0;
+      padding: 18px;
+      background: var(--code);
+      color: #d1d5db;
+      border-radius: 16px;
+      overflow: auto;
+      border: 1px solid #1e293b;
+      font-size: 13px;
+      line-height: 1.55;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+
+    .note {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 16px;
+      padding: 16px;
+      color: #dbeafe;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 980px) {
+      .grid, .cols { grid-template-columns: 1fr; }
+      .hero { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="kicker">Streamlit 신구대조표</span>
+      <h1>기존 코드와 최소 코드의 차이</h1>
+      <p class="lead">
+        이 문서는 <code>web/streamlit_app.py</code>와 <code>web/min_streamlit_app.py</code>를
+        초보자도 비교해서 읽기 쉽게 정리한 화면입니다.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h3>한 줄 요약</h3>
+          <p>
+            기존 파일은 <strong>실습용 완성형</strong>이고, 새 파일은 <strong>채팅이 되기만 하는 최소형</strong>입니다.
+          </p>
+        </div>
+        <div class="card">
+          <h3>핵심 변화</h3>
+          <p>
+            사이드바, FAQ, 길이 제한, 스트리밍, 오류 처리, 비용 계산을 빼고
+            “입력 → 히스토리 저장 → 모델 호출 → 출력”만 남겼습니다.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>신구대조표</h2>
+      <table>
+        <tr>
+          <th>항목</th>
+          <th>기존 <code>streamlit_app.py</code></th>
+          <th>새 <code>min_streamlit_app.py</code></th>
+          <th>의미</th>
+        </tr>
+        <tr>
+          <th>제목</th>
+          <td>나만의 ChatGPT 💬 (Streamlit)</td>
+          <td>Mini Chat 💬</td>
+          <td>화면 목적을 단순하게 보이게 함</td>
+        </tr>
+        <tr>
+          <th>사이드바</th>
+          <td>
+            <span class="badge keep">남김</span>
+            페르소나, temperature, 초기화, FAQ
+          </td>
+          <td>
+            <span class="badge remove">삭제</span>
+            없음
+          </td>
+          <td>초보자에게 가장 복잡한 부분이라 제거</td>
+        </tr>
+        <tr>
+          <th>시스템 프롬프트</th>
+          <td>페르소나별로 바뀜</td>
+          <td>고정된 한 줄</td>
+          <td>대화 규칙을 이해하기 쉽게 단순화</td>
+        </tr>
+        <tr>
+          <th>히스토리 저장</th>
+          <td>
+            <span class="badge keep">남김</span>
+            <code>st.session_state.messages</code> + <code>total_tokens</code>
+          </td>
+          <td>
+            <span class="badge keep">남김</span>
+            <code>st.session_state.messages</code>만
+          </td>
+          <td>“대화를 기억하는 부분”은 유지</td>
+        </tr>
+        <tr>
+          <th>출력 방식</th>
+          <td>
+            <span class="badge simplify">복잡</span>
+            <code>llm.stream</code> + <code>st.write_stream</code>
+          </td>
+          <td>
+            <span class="badge simplify">단순</span>
+            <code>llm.invoke</code> + <code>st.write</code>
+          </td>
+          <td>코드 흐름을 처음 배우기 좋음</td>
+        </tr>
+        <tr>
+          <th>예외 처리</th>
+          <td>있음</td>
+          <td>없음</td>
+          <td>최소 코드라 실패 처리 생략</td>
+        </tr>
+        <tr>
+          <th>비용 표시</th>
+          <td>있음</td>
+          <td>없음</td>
+          <td>학습용 핵심과 직접 관계 없어서 제거</td>
+        </tr>
+      </table>
+    </section>
+
+    <section class="cols" style="margin-top:18px;">
+      <div class="card">
+        <h2>기존 코드의 흐름</h2>
+        <p>
+          사용자가 어떤 페르소나를 고를지, 입력은 몇 글자인지, 오류가 나면 어떻게 할지까지 같이 처리합니다.
+        </p>
+        <pre><code>with st.sidebar:
+    persona = st.selectbox(...)
+    temperature = st.slider(...)
+    if st.button("대화 초기화"):
+        st.session_state.clear()
+
+if user_input:
+    if len(user_input) &gt; MAX_CHARS:
+        st.warning(...)
+        st.stop()
+
+    msgs = [SystemMessage(content=PERSONAS[persona])]
+    for m in st.session_state.messages:
+        ...</code></pre>
+      </div>
+
+      <div class="card">
+        <h2>새 코드의 흐름</h2>
+        <p>
+          입력과 출력, 그리고 대화 기억만 남겼습니다. 그래서 처음 보는 사람도 구조를 빠르게 이해할 수 있습니다.
+        </p>
+        <pre><code>if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+user_input = st.chat_input("메시지를 입력하세요")
+
+if user_input:
+    st.session_state.messages.append(...)
+    msgs = [SystemMessage(content=SYSTEM)]
+    for message in st.session_state.messages:
+        ...
+    answer = llm.invoke(msgs).content or ""</code></pre>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px;">
+      <h2>초보자용 해설</h2>
+      <div class="note">
+        <strong>1. <code>st.session_state.messages</code></strong><br />
+        Streamlit은 화면이 다시 그려질 때 코드가 위에서부터 재실행됩니다.
+        그래서 대화 내용을 잃지 않으려면 여기 같은 “저장소”가 필요합니다.
+      </div>
+      <div class="note" style="margin-top:12px;">
+        <strong>2. <code>msgs</code></strong><br />
+        모델에게 넘기는 최종 대화 목록입니다.
+        시스템 메시지와 사용자/assistant 메시지를 LangChain 형식으로 다시 묶는 역할을 합니다.
+      </div>
+      <div class="note" style="margin-top:12px;">
+        <strong>3. <code>llm.invoke(msgs)</code></strong><br />
+        이 한 줄이 실제 모델 호출입니다.
+        앞의 대화를 포함한 <code>msgs</code>를 보고 모델이 답을 만듭니다.
+      </div>
+      <p class="footer">
+        파일은 로컬에서 열어보면 됩니다. 예: <code>streamlit run web/min_streamlit_app.py</code><br />
+        이 HTML은 설명용 문서라서, 기존 파이썬 코드는 수정하지 않았습니다.
+      </p>
+    </section>
+  </main>
+</body>
+</html>

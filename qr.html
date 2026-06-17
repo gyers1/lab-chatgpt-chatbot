@@ -1,0 +1,14 @@
+<script>
+function _quCopy(btn){
+  navigator.clipboard.writeText(btn.dataset.v).then(()=>{
+    var t=btn.textContent;btn.textContent='✓ Copied';
+    setTimeout(()=>btn.textContent=t,1500);
+  }).catch(()=>{
+    var ta=document.createElement('textarea');
+    ta.value=btn.dataset.v;document.body.appendChild(ta);
+    ta.select();document.execCommand('copy');document.body.removeChild(ta);
+    var t=btn.textContent;btn.textContent='✓ Copied';
+    setTimeout(()=>btn.textContent=t,1500);
+  });
+}
+</script><div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--background-secondary,#1e1e2e);border:1px solid var(--border-color,#3b3b5c);border-radius:14px;padding:18px 22px;margin:6px 0;color:var(--text-primary,#cdd6f4);max-width:600px;"><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;border-bottom:1px solid var(--border-color,#3b3b5c);padding-bottom:10px;"><span style="font-size:20px;">📱</span><span style="font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#f59e0b;">QR Code</span></div><div style="display:flex;flex-direction:column;align-items:center;gap:12px;"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAUoAAAFKAQAAAABTUiuoAAAB80lEQVR4nO2bXarbMBCFv6kNeVSgC+hS5B10TdmZvJTuwHq84HD6IMn2DbfgtDhxYebB4Ph7ODAczY+IiZ0xfttLgqOOOuqoo44eiVqNHhuymQ25B3L7eThcgKPPoFGSNIFuP2YgzACdJEmf0WMEOPoMmpuF4q8exivYAJhZ/xoBju6I/uHdYhKQDZFfIcDRf0FH23rrDQIc/XM0bwUBGYjpbkA3G8B2dn67VkcrOpqZ2RUgX0ScALiXlvAVAhzdE8VbWwuFD6slK3zeSr1dq6N13hoAG7JZ8dZ4vZtuzW82HC7A0X2hGjPrbCVpBoIEoX5QertWR5d566IyW0VJbcq6V6u9QoCjz6FKYQaymVKQlOhEnO7eZZwG/XT+TZ2UlvMvQXmUvZSfhO9HW7ZCK16JTiVRkkSU163zoK3LmGhmanl7WO16tk6AbrJV0xMk4tTVETlOuLdOgy51q6anuaxbJmP31nnQZd6StnnTXHqLevHl2ToTut4dQ/gwRrsIcv8FeowAR59B17vjxDJ5hbleoLxAgKO7ojbqE7TeolNdOpXo5PPWWVHdrqCUzVrT4buM86CPN/3E6TtEAeO1mxl/zr2OFODoX5yEpW515bH28iviJ+EJ0M2eENqUtW6eSsq8bp0ENf/XgqOOOuqoo/8R+hvWJmaJltEvoQAAAABJRU5ErkJggg==" alt="QR Code" style="width:220px;height:220px;border-radius:10px;background:#fff;padding:8px;display:block;" /><div style="font-size:11px;color:var(--text-secondary,#a6adc8);word-break:break-all;text-align:center;">https://kpc.or.kr</div><div style="font-size:10px;color:var(--text-secondary,#a6adc8);">EC level: M · 17 chars encoded</div><button onclick="_quCopy(this)" data-v="https://kpc.or.kr" style="cursor:pointer;background:rgba(124,58,237,.15);color:#a78bfa;border:1px solid rgba(124,58,237,.35);border-radius:6px;padding:3px 10px;font-size:11px;margin-left:8px;font-family:inherit;white-space:nowrap;">Copy content</button></div></div>QR 코드가 생성되었습니다. [1]

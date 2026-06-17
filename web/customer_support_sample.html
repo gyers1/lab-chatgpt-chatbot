@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>고객지원 센터</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: #111827;
+      --panel-2: #1f2937;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #1c64f2;
+      --border: #334155;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(28, 100, 242, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.14), transparent 24%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 72px;
+    }
+
+    .hero {
+      background: linear-gradient(180deg, rgba(17, 24, 39, 0.96), rgba(15, 23, 42, 0.96));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 22px 64px rgba(0, 0, 0, 0.28);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(28, 100, 242, 0.16);
+      color: #93c5fd;
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: rgba(17, 24, 39, 0.92);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 22px;
+    }
+
+    .card h2 {
+      margin: 0 0 14px;
+      font-size: 1.15rem;
+    }
+
+    .faq {
+      display: grid;
+      gap: 10px;
+    }
+
+    .faq-item {
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(31, 41, 55, 0.75);
+      border: 1px solid rgba(51, 65, 85, 0.85);
+    }
+
+    .faq-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #f8fafc;
+    }
+
+    .note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: rgba(28, 100, 242, 0.08);
+      border-radius: 12px;
+      color: #dbeafe;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <span class="badge">Sample Customer Support</span>
+      <h1>고객지원 센터</h1>
+      <p>
+        궁금한 내용을 채팅으로 바로 물어보세요.
+        아래에는 자주 묻는 질문과 간단한 안내를 넣어 두었습니다.
+      </p>
+
+      <div class="grid">
+        <div class="card">
+          <h2>안내</h2>
+          <p>
+            이 페이지는 아주 간단한 고객지원 예시입니다.
+            오른쪽 하단의 챗봇 버튼을 눌러 대화를 시작할 수 있습니다.
+          </p>
+          <div class="note">
+            요청하신 코드는 iframe이 아니라 Dify embed script 형태입니다.
+            그래서 이 HTML 안에 그대로 포함했습니다.
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>FAQ</h2>
+          <div class="faq">
+            <div class="faq-item">
+              <strong>배송은 언제 도착하나요?</strong>
+              주문 후 보통 2~3영업일 내 처리됩니다.
+            </div>
+            <div class="faq-item">
+              <strong>환불은 어떻게 하나요?</strong>
+              고객지원 채팅으로 주문번호를 남겨 주세요.
+            </div>
+            <div class="faq-item">
+              <strong>비밀번호를 잊어버렸어요.</strong>
+              로그인 화면의 비밀번호 찾기를 이용해 주세요.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        필요하면 이 파일을 기준으로 로고, 브랜드 색상, 문의 버튼을 더 붙일 수 있습니다.
+      </div>
+    </section>
+  </main>
+
+  <script>
+   window.difyChatbotConfig = {
+    token: 'S6bo6hcJfBHWugmj',
+    baseUrl: 'http://localhost',
+    inputs: {
+      // You can define the inputs from the Start node here
+      // key is the variable name
+      // e.g.
+      // name: "NAME"
+    },
+    systemVariables: {
+      // user_id: 'YOU CAN DEFINE USER ID HERE',
+      // conversation_id: 'YOU CAN DEFINE CONVERSATION ID HERE, IT MUST BE A VALID UUID',
+    },
+    userVariables: {
+      // avatar_url: 'YOU CAN DEFINE USER AVATAR URL HERE',
+      // name: 'YOU CAN DEFINE USER NAME HERE',
+    },
+   }
+  </script>
+  <script
+   src="http://localhost/embed.min.js"
+   id="S6bo6hcJfBHWugmj"
+   defer>
+  </script>
+  <style>
+    #dify-chatbot-bubble-button {
+      background-color: #1C64F2 !important;
+    }
+    #dify-chatbot-bubble-window {
+      width: 24rem !important;
+      height: 40rem !important;
+    }
+  </style>
+</body>
+</html>

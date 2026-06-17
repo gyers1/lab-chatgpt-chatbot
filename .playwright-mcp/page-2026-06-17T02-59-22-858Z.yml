@@ -1,0 +1,121 @@
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: Streamlit 신구대조표
+    - heading "기존 코드와 최소 코드의 차이" [level=1] [ref=e5]
+    - paragraph [ref=e6]:
+      - text: 이 문서는
+      - code [ref=e7]: web/streamlit_app.py
+      - text: 와
+      - code [ref=e8]: web/min_streamlit_app.py
+      - text: 를 초보자도 비교해서 읽기 쉽게 정리한 화면입니다.
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - heading "한 줄 요약" [level=3] [ref=e11]
+        - paragraph [ref=e12]:
+          - text: 기존 파일은
+          - strong [ref=e13]: 실습용 완성형
+          - text: 이고, 새 파일은
+          - strong [ref=e14]: 채팅이 되기만 하는 최소형
+          - text: 입니다.
+      - generic [ref=e15]:
+        - heading "핵심 변화" [level=3] [ref=e16]
+        - paragraph [ref=e17]: 사이드바, FAQ, 길이 제한, 스트리밍, 오류 처리, 비용 계산을 빼고 “입력 → 히스토리 저장 → 모델 호출 → 출력”만 남겼습니다.
+  - generic [ref=e18]:
+    - heading "신구대조표" [level=2] [ref=e19]
+    - table [ref=e20]:
+      - rowgroup [ref=e21]:
+        - row "항목 기존 streamlit_app.py 새 min_streamlit_app.py 의미" [ref=e22]:
+          - columnheader "항목" [ref=e23]
+          - columnheader "기존 streamlit_app.py" [ref=e24]:
+            - text: 기존
+            - code [ref=e25]: streamlit_app.py
+          - columnheader "새 min_streamlit_app.py" [ref=e26]:
+            - text: 새
+            - code [ref=e27]: min_streamlit_app.py
+          - columnheader "의미" [ref=e28]
+        - row "제목 나만의 ChatGPT 💬 (Streamlit) Mini Chat 💬 화면 목적을 단순하게 보이게 함" [ref=e29]:
+          - rowheader "제목" [ref=e30]
+          - cell "나만의 ChatGPT 💬 (Streamlit)" [ref=e31]
+          - cell "Mini Chat 💬" [ref=e32]
+          - cell "화면 목적을 단순하게 보이게 함" [ref=e33]
+        - row "사이드바 남김 페르소나, temperature, 초기화, FAQ 삭제 없음 초보자에게 가장 복잡한 부분이라 제거" [ref=e34]:
+          - rowheader "사이드바" [ref=e35]
+          - cell "남김 페르소나, temperature, 초기화, FAQ" [ref=e36]:
+            - generic [ref=e37]: 남김
+            - text: 페르소나, temperature, 초기화, FAQ
+          - cell "삭제 없음" [ref=e38]:
+            - generic [ref=e39]: 삭제
+            - text: 없음
+          - cell "초보자에게 가장 복잡한 부분이라 제거" [ref=e40]
+        - row "시스템 프롬프트 페르소나별로 바뀜 고정된 한 줄 대화 규칙을 이해하기 쉽게 단순화" [ref=e41]:
+          - rowheader "시스템 프롬프트" [ref=e42]
+          - cell "페르소나별로 바뀜" [ref=e43]
+          - cell "고정된 한 줄" [ref=e44]
+          - cell "대화 규칙을 이해하기 쉽게 단순화" [ref=e45]
+        - row "히스토리 저장 남김 st.session_state.messages + total_tokens 남김 st.session_state.messages만 “대화를 기억하는 부분”은 유지" [ref=e46]:
+          - rowheader "히스토리 저장" [ref=e47]
+          - cell "남김 st.session_state.messages + total_tokens" [ref=e48]:
+            - generic [ref=e49]: 남김
+            - code [ref=e50]: st.session_state.messages
+            - text: +
+            - code [ref=e51]: total_tokens
+          - cell "남김 st.session_state.messages만" [ref=e52]:
+            - generic [ref=e53]: 남김
+            - code [ref=e54]: st.session_state.messages
+            - text: 만
+          - cell "“대화를 기억하는 부분”은 유지" [ref=e55]
+        - row "출력 방식 복잡 llm.stream + st.write_stream 단순 llm.invoke + st.write 코드 흐름을 처음 배우기 좋음" [ref=e56]:
+          - rowheader "출력 방식" [ref=e57]
+          - cell "복잡 llm.stream + st.write_stream" [ref=e58]:
+            - generic [ref=e59]: 복잡
+            - code [ref=e60]: llm.stream
+            - text: +
+            - code [ref=e61]: st.write_stream
+          - cell "단순 llm.invoke + st.write" [ref=e62]:
+            - generic [ref=e63]: 단순
+            - code [ref=e64]: llm.invoke
+            - text: +
+            - code [ref=e65]: st.write
+          - cell "코드 흐름을 처음 배우기 좋음" [ref=e66]
+        - row "예외 처리 있음 없음 최소 코드라 실패 처리 생략" [ref=e67]:
+          - rowheader "예외 처리" [ref=e68]
+          - cell "있음" [ref=e69]
+          - cell "없음" [ref=e70]
+          - cell "최소 코드라 실패 처리 생략" [ref=e71]
+        - row "비용 표시 있음 없음 학습용 핵심과 직접 관계 없어서 제거" [ref=e72]:
+          - rowheader "비용 표시" [ref=e73]
+          - cell "있음" [ref=e74]
+          - cell "없음" [ref=e75]
+          - cell "학습용 핵심과 직접 관계 없어서 제거" [ref=e76]
+  - generic [ref=e77]:
+    - generic [ref=e78]:
+      - heading "기존 코드의 흐름" [level=2] [ref=e79]
+      - paragraph [ref=e80]: 사용자가 어떤 페르소나를 고를지, 입력은 몇 글자인지, 오류가 나면 어떻게 할지까지 같이 처리합니다.
+      - code [ref=e82]: "with st.sidebar: persona = st.selectbox(...) temperature = st.slider(...) if st.button(\"대화 초기화\"): st.session_state.clear() if user_input: if len(user_input) > MAX_CHARS: st.warning(...) st.stop() msgs = [SystemMessage(content=PERSONAS[persona])] for m in st.session_state.messages: ..."
+    - generic [ref=e83]:
+      - heading "새 코드의 흐름" [level=2] [ref=e84]
+      - paragraph [ref=e85]: 입력과 출력, 그리고 대화 기억만 남겼습니다. 그래서 처음 보는 사람도 구조를 빠르게 이해할 수 있습니다.
+      - code [ref=e87]: "if \"messages\" not in st.session_state: st.session_state.messages = [] user_input = st.chat_input(\"메시지를 입력하세요\") if user_input: st.session_state.messages.append(...) msgs = [SystemMessage(content=SYSTEM)] for message in st.session_state.messages: ... answer = llm.invoke(msgs).content or \"\""
+  - generic [ref=e88]:
+    - heading "초보자용 해설" [level=2] [ref=e89]
+    - generic [ref=e90]:
+      - strong [ref=e91]:
+        - text: "1."
+        - code [ref=e92]: st.session_state.messages
+      - text: Streamlit은 화면이 다시 그려질 때 코드가 위에서부터 재실행됩니다. 그래서 대화 내용을 잃지 않으려면 여기 같은 “저장소”가 필요합니다.
+    - generic [ref=e93]:
+      - strong [ref=e94]:
+        - text: "2."
+        - code [ref=e95]: msgs
+      - text: 모델에게 넘기는 최종 대화 목록입니다. 시스템 메시지와 사용자/assistant 메시지를 LangChain 형식으로 다시 묶는 역할을 합니다.
+    - generic [ref=e96]:
+      - strong [ref=e97]:
+        - text: "3."
+        - code [ref=e98]: llm.invoke(msgs)
+      - text: 이 한 줄이 실제 모델 호출입니다. 앞의 대화를 포함한
+      - code [ref=e99]: msgs
+      - text: 를 보고 모델이 답을 만듭니다.
+    - paragraph [ref=e100]:
+      - text: "파일은 로컬에서 열어보면 됩니다. 예:"
+      - code [ref=e101]: streamlit run web/min_streamlit_app.py
+      - text: 이 HTML은 설명용 문서라서, 기존 파이썬 코드는 수정하지 않았습니다.
